@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     public static String MERCH_ID = "JPMERCHANT";
     public static String MERCH_CHAN_ID = "JPMERCHANT";
     public static String MERCHANT_KEY = "qlsUjKdMIDSHfwfwjehfbwebfjwQGRTWQ21323NJNJ0En6blp6SIlmHmvCNhoLuiAL4toSzWo238i35OXtGmmdVlfUWOHGwtv3csriX9GHjiuxqwrbKdVw75NBuxQRLBlyvkewCjephWfOtfpAj9Avob6eCt8MVN6r19jp0Be1rZGNdLhwVjRRdbmOKL1ynXXm9YLF1fLtJcuTff7gtimiNKLWca9iyq171ZkibZoGhknV5UTDDPvgrd0Qkg9mnKqVfFyE8A";
-    public  final String MCC_CODE = "";
+    public  final String MCC_CODE = "1520";
    
-    public  String UNQ_TXN_ID= "1234A" + Math.random();
+    public  String UNQ_TXN_ID= "1234A";
     public  String UNQ_CUST_ID="918754543283";
     public  final String MOBILENO="918754543283";
     public  final String EMAILID="sathoshthepro@gmail.com";
@@ -41,10 +41,9 @@ public class MainActivity extends AppCompatActivity {
     public  final String TXN_DTL="TRAVEL";
 
     public  final String CURRENCY="INR";
-    public  String ORDER_ID;
+    public  String ORDER_ID="124346";
     public  String UDF_PARAMS = new JSONObject().toString();
     public  String MERCH_CHECKSUM="MERCH_CHECKSUM";
-    HashMap<String, String> customParameters = new HashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,10 +104,7 @@ public class MainActivity extends AppCompatActivity {
         MERCH_CHECKSUM = hmacDigest(payload, MERCHANT_KEY, "HmacSHA256");
         upiParams.setMerchantChecksum(MERCH_CHECKSUM);
 
-        upiParams.setAllowOtherVpa("false");
-        upiParams.setShowOtherPaymentOptions("true");
-        upiParams.setOtherPaymentOptionType("COLLECT");
-
+        Toast.makeText(getApplicationContext(),payload,Toast.LENGTH_LONG).show();
         Log.d("SDK","TRANSACTION "+upiParams);
 
         axisUpi.startTransaction(upiParams, new TransactionCallback() {
